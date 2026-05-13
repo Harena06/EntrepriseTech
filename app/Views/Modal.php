@@ -249,5 +249,14 @@ code,pre,.mono{font-family:'DM Mono',monospace}
 </head>
 <body>
     <?php include $page . '.php' ?>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
 </body>
 </html>
