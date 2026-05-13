@@ -34,19 +34,20 @@
     <p class="auth-sub">Entrez vos identifiants pour accéder à votre espace.</p>
 
     <!-- Flashdata CI4 — erreur -->
-    <div class="flash flash-error">
-      <i class="bi bi-exclamation-circle-fill"></i>
-      Identifiants incorrects. Veuillez réessayer.
-    </div>
+    <?php if(isset($erreur)): ?>
+        <div class="flash flash-error">
+            <i class="fa-solid fa-circle-exclamation"></i> <?= esc($erreur) ?>
+        </div>
+    <?php endif; ?>
 
     <form action = "/connexion" method = "post">
       <div class="f-group">
         <label class="f-label">Adresse email</label>
-        <input type="email" class="f-input" placeholder="vous@techmada.mg" value="employe@techmada.mg"/>
+        <input type="email"  name="email" class="f-input" placeholder="vous@techmada.mg" value="employe@techmada.mg"/>
       </div>
       <div class="f-group">
         <label class="f-label">Mot de passe</label>
-        <input type="password" class="f-input" placeholder="••••••••" value="emp123"/>
+        <input type="password" name="password" class="f-input" placeholder="••••••••" value="emp123"/>
       </div>
       <button type="submit" class="btn-primary" style="margin-top:.5rem">
         Se connecter <i class="bi bi-arrow-right-short"></i>
