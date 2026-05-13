@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => '',
         'username'     => '',
         'password'     => '',
-        'database'     => WRITEPATH . 'Base/examen.db',
+        'database'     => WRITEPATH . 'examen.db',
         'DBDriver'     => 'SQLite3',
         'DBPrefix'     => '',
         'pConnect'     => false,
