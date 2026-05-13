@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\SoldeModel;
 
 class CongeModel extends Model
 {
@@ -23,7 +24,8 @@ class CongeModel extends Model
 		'nb_jours' => 'required|integer|greater_than[0]',
 		'motif' => 'required|string',
 		'statut' => 'required|in_list[en_attente,approuve,rejete,annule]',
-		'traite_par' => 'integer'
+		'commentaire_rh' => 'permit_empty|string',
+		'traite_par' => 'permit_empty|integer'
 	];
 
 	protected $validationMessages = [
@@ -50,5 +52,99 @@ class CongeModel extends Model
 	public function getCongesEnAttente()
 	{
 		return $this->where('statut', 'en_attente')->findAll();
+	}
+
+	public function approuverConge(int $congeId, int $rhId, int $annee, ?string $commentaire = null): bool
+	{
+		$this->db->transStart();
+
+		$conge = $this->find($congeId);
+		if (! $conge || $conge['statut'] !== 'en_attente') {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$soldeModel = new SoldeModel();
+		if (! $soldeModel->hasSoldeDisponible((int) $conge['employe_id'], (int) $conge['type_conge_id'], $annee, (int) $conge['nb_jours'])) {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$solde = $soldeModel->getSolde((int) $conge['employe_id'], (int) $conge['type_conge_id'], $annee);
+		if (! $solde) {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$okConge = $this->update($congeId, [
+			'statut' => 'approuve',
+			'commentaire_rh' => $commentaire ?? '',
+			'traite_par' => $rhId,
+		]);
+
+		if (! $okConge) {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$okSolde = $soldeModel->updateJoursPris((int) $solde['id'], (int) $conge['nb_jours']);
+		if (! $okSolde) {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$this->db->transComplete();
+
+		return $this->db->transStatus();
+	}
+
+	public function refuserConge(int $congeId, int $rhId, ?string $commentaire = null): bool
+	{
+		$conge = $this->find($congeId);
+		if (! $conge || $conge['statut'] !== 'en_attente') {
+			return false;
+		}
+
+		return (bool) $this->update($congeId, [
+			'statut' => 'refuse',
+			'commentaire_rh' => $commentaire ?? '',
+			'traite_par' => $rhId,
+		]);
+	}
+
+	public function annulerConge(int $congeId, int $annee): bool
+	{
+		$this->db->transStart();
+
+		$conge = $this->find($congeId);
+		if (! $conge || $conge['statut'] === 'annule' || $conge['statut'] === 'refuse') {
+			$this->db->transRollback();
+			return false;
+		}
+
+		$okConge = $this->update($congeId, ['statut' => 'annule']);
+		if (! $okConge) {
+			$this->db->transRollback();
+			return false;
+		}
+
+		if ($conge['statut'] === 'approuve') {
+			$soldeModel = new SoldeModel();
+			$solde = $soldeModel->getSolde((int) $conge['employe_id'], (int) $conge['type_conge_id'], $annee);
+			if (! $solde) {
+				$this->db->transRollback();
+				return false;
+			}
+
+			$okSolde = $soldeModel->updateJoursPris((int) $solde['id'], -((int) $conge['nb_jours']));
+			if (! $okSolde) {
+				$this->db->transRollback();
+				return false;
+			}
+		}
+
+		$this->db->transComplete();
+
+		return $this->db->transStatus();
 	}
 }

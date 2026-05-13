@@ -4,9 +4,10 @@ CREATE TABLE Employes(
     email TEXT NOT NULL UNIQUE,
     mot_de_passe TEXT NOT NULL,
     role TEXT NOT NULL,
-    departement TEXT NOT NULL,
+    departement_id INTEGER NOT NULL,
     date_embauche DATE NOT NULL,
-    actif INTEGER DEFAULT 0
+    actif INTEGER DEFAULT 0,
+    FOREIGN KEY (departement_id) REFERENCES Departements(id)
 );
 
 
@@ -43,9 +44,9 @@ CREATE TABLE Conges(
     nb_jours INTEGER NOT NULL,
     motif TEXT NOT NULL,
     statut TEXT NOT NULL,
-    commentaire_rh TEXT NOT NULL,
+    commentaire_rh TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    traite_par INTEGER NOT NULL,
+    traite_par INTEGER,
     FOREIGN KEY (employe_id) REFERENCES Employes(id),
     FOREIGN KEY (type_conge_id) REFERENCES Types_conges(id),
     FOREIGN KEY (traite_par) REFERENCES Employes(id)
@@ -72,7 +73,7 @@ INSERT INTO Employes (
     email,
     mot_de_passe,
     role,
-    departement,
+    departement_id,
     date_embauche,
     actif
 ) VALUES
@@ -81,7 +82,7 @@ INSERT INTO Employes (
     'jean@entreprise.com',
     'password123',
     'employe',
-    'Informatique',
+    1,
     '2023-01-15',
     1
 ),
@@ -90,7 +91,7 @@ INSERT INTO Employes (
     'sarah@entreprise.com',
     'password123',
     'employe',
-    'Finance',
+    3,
     '2022-08-10',
     1
 ),
@@ -99,7 +100,7 @@ INSERT INTO Employes (
     'mickael@entreprise.com',
     'rh123',
     'rh',
-    'Ressources Humaines',
+    2,
     '2021-03-05',
     1
 ),
@@ -108,7 +109,7 @@ INSERT INTO Employes (
     'admin@entreprise.com',
     'admin123',
     'admin',
-    'Direction',
+    5,
     '2020-01-01',
     1
 ),
@@ -117,7 +118,7 @@ INSERT INTO Employes (
     'lucie@entreprise.com',
     'password123',
     'employe',
-    'Marketing',
+    4,
     '2024-02-20',
     1
 );
