@@ -7,6 +7,6 @@
     {
         public function index()
         {
-            return view('Model', ['page' => 'employe/Index']);
+            return view('Modal', ['page' => 'employe/Index']);
         }
     }
