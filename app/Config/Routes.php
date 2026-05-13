@@ -10,7 +10,9 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/bo/dashboard/general', 'BOController::general');
 $routes->get('/rh/dashboard/general', 'RHController::general');
-$routes->get('/index' , 'UserController::index');
+$routes->get('/index' , 'EmployeController::index');
+$routes->post('/connexion', 'AuthController::login');
+$routes->get('/deconnexion', 'AuthController::logout');
 
 // Employe
 $routes->get('/conges', 'CongeController::mesDemandes');
