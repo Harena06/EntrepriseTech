@@ -50,3 +50,10 @@ CREATE TABLE Conges(
     FOREIGN KEY (type_conge_id) REFERENCES Types_conges(id),
     FOREIGN KEY (traite_par) REFERENCES Employes(id)
 );
+
+-- Insertion de quelques employés
+INSERT INTO Employes (nom, email, mot_de_passe, role, departement, date_embauche, actif) VALUES
+('Jean Dupont', 'jean.dupont@example.com', 'mdp123', 'employe', 'Informatique', '2020-01-15', 1),
+('Marie Curie', 'marie.curie@example.com', 'mdp456', 'manager', 'Informatique', '2018-06-10', 1),
+('Sophie Martin', 'sophie.martin@example.com', 'mdp789', 'rh', 'Ressources Humaines', '2019-03-22', 1),
+('Paul Durand', 'paul.durand@example.com', 'mdp101', 'employe', 'Marketing', '2021-11-01', 1);
