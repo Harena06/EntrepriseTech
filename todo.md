@@ -43,3 +43,12 @@
     - Creation Modal.php
 -[ok] Integration Template
 - 
+            <?php foreach ($conges as $conge): ?>
+              <tr>
+                <td><?= $conge['libelle'] ?></td>
+                <td><?= $conge['date_debut'] ?></td>
+                <td><?= $conge['date_fin'] ?></td>
+                <td><?= $conge['nb_jours'] ?> j</td>
+                <td><?= $conge['statut'] ?></td>
+              </tr>
+            <?php endforeach; ?>

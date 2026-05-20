@@ -1,24 +1,7 @@
 <section id="page-form-conge" style="margin-top:3rem">
 <div class="app-wrap">
 
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="sidebar-logo-icon"><i class="bi bi-briefcase"></i></div>
-      <div class="sidebar-brand-name">TechMada RH<span>Espace employé</span></div>
-    </div>
-    <ul class="sidebar-nav" style="margin-top:1rem">
-      <li><a href="#page-dashboard-employe"><i class="bi bi-grid-1x2"></i> Tableau de bord</a></li>
-      <li><a href="#page-form-conge" class="active"><i class="bi bi-plus-circle"></i> Nouvelle demande</a></li>
-      <li><a href="#page-mes-conges"><i class="bi bi-calendar3"></i> Mes demandes</a></li>
-      <li><a href="#page-profil-employe"><i class="bi bi-person"></i> Mon profil</a></li>
-    </ul>
-    <div class="sidebar-user">
-      <div class="s-user-row">
-        <div class="avatar av-green">SR</div>
-        <div><div class="user-name">Soa Rakoto</div><div class="user-role">Employé · IT</div></div>
-      </div>
-    </div>
-  </aside>
+  <?php echo view('employe/Sidebar'); ?>
 
   <div class="main">
     <div class="topbar">
@@ -33,46 +16,86 @@
 
     <div class="content">
 
+      <?php if (session()->getFlashdata('success')): ?>
+        <div class="flash flash-success">
+          <i class="bi bi-check-circle-fill"></i>
+          <?= esc(session()->getFlashdata('success')) ?>
+        </div>
+      <?php endif; ?>
+
       <div style="display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start" class="form-layout">
 
         <!-- Formulaire principal -->
+        <form action="<?= base_url('conges/demander') ?>" method="post">
         <div>
           <div class="form-section">
             <h3>Détails de la demande</h3>
 
             <div class="f-group" style="margin-bottom:1rem">
               <label class="f-label">Type de congé <span style="color:var(--danger)">*</span></label>
-              <select class="f-select">
+              <select class="f-select" name="type_conge_id" id="typeConge">
                 <option value="">-- Choisir un type --</option>
-                <option value="1" selected>Congé annuel (18 j restants)</option>
+                <?php foreach ($typesConge as $type): ?>
+                  <option value="<?= $type['id'] ?>"><?= $type['libelle'] ?></option>
+                <?php endforeach; ?>
+                <!-- <option value="1" selected>Congé annuel (18 j restants)</option>
                 <option value="2">Congé maladie (8 j restants)</option>
                 <option value="3">Congé spécial (1 j restant)</option>
-                <option value="4">Sans solde</option>
+                <option value="4">Sans solde</option> -->
               </select>
               <!-- Erreur validation CI4 -->
-              <div class="f-error"><i class="bi bi-exclamation-circle"></i> Ce champ est requis.</div>
+              <!-- <div class="f-error"><i class="bi bi-exclamation-circle"></i> Ce champ est requis.</div> -->
             </div>
 
             <div class="form-grid-2" style="margin-bottom:1rem">
+
               <div class="f-group">
-                <label class="f-label">Date de début <span style="color:var(--danger)">*</span></label>
-                <input type="date" class="f-input" value="2025-06-23"/>
+                <label class="f-label">
+                  Date de début
+                  <span style="color:var(--danger)">*</span>
+                </label>
+
+                <input
+                  name="date_debut"
+                  type="date"
+                  class="f-input"
+                  id="dateDebut"
+                />
               </div>
+
               <div class="f-group">
-                <label class="f-label">Date de fin <span style="color:var(--danger)">*</span></label>
-                <input type="date" class="f-input" value="2025-06-27"/>
+                <label class="f-label">
+                  Date de fin
+                  <span style="color:var(--danger)">*</span>
+                </label>
+
+                <input
+                  name="date_fin"
+                  type="date"
+                  class="f-input"
+                  id="dateFin"
+                />
               </div>
+
             </div>
 
-            <!-- Calcul automatique côté PHP (affiché après soumission ou en JS) -->
             <div class="f-computed">
-              <div class="f-computed-num">5</div>
-              <div class="f-computed-label">jours calendaires calculés<br><span style="font-size:.7rem;opacity:.7">du lundi 23 au vendredi 27 juin 2025</span></div>
+
+              <div class="f-computed-num" id="nbJours">
+                0
+              </div>
+
+              <input type="hidden" name="nb_jours" id="nbJoursInput" value="0">
+
+              <div class="f-computed-label">
+                jours calendaires calculés
+              </div>
+
             </div>
 
             <div class="f-group" style="margin-bottom:1rem">
               <label class="f-label">Motif (optionnel)</label>
-              <textarea class="f-textarea" placeholder="Précisez le motif de votre demande si nécessaire..."></textarea>
+              <textarea class="f-textarea" name="motif" placeholder="Précisez le motif de votre demande si nécessaire..."></textarea>
               <div class="f-hint">Le motif est visible par le responsable RH.</div>
             </div>
 
@@ -82,6 +105,7 @@
             </div>
           </div>
         </div>
+        </form>
 
         <!-- Panneau latéral : solde & règles -->
         <div style="display:flex;flex-direction:column;gap:1rem">
@@ -132,3 +156,35 @@
 
 </div>
 </section>
+
+<script>
+
+const dateDebut = document.getElementById("dateDebut");
+const dateFin = document.getElementById("dateFin");
+const nbJours = document.getElementById("nbJours");
+const nbJoursInput = document.getElementById("nbJoursInput");
+function calculerJours() {
+
+    if(dateDebut.value && dateFin.value){
+
+        const debut = new Date(dateDebut.value);
+        const fin = new Date(dateFin.value);
+
+        const difference = fin - debut;
+
+        const jours = (difference / (1000 * 60 * 60 * 24));
+
+        if(jours > 0){
+            nbJours.innerText = jours;
+            nbJoursInput.value = jours;
+        }else{
+            nbJours.innerText = 0;
+            nbJoursInput.value = 0;
+        }
+    }
+}
+
+dateDebut.addEventListener("change", calculerJours);
+dateFin.addEventListener("change", calculerJours);
+
+</script> 

@@ -31,5 +31,4 @@ class EmployeModel extends Model{
         return $this->where('email', $email)->first();
     }
 
-
 }
