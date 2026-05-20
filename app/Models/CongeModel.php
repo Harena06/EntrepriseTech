@@ -49,9 +49,33 @@ class CongeModel extends Model
 		return $this->where('employe_id', $employeId)->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->findAll();
 	}
 
+	public function getCongesByEmployeLimited($employeId, $limit = 3)
+	{
+		return $this->where('employe_id', $employeId)->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->orderBy('created_at', 'DESC')->findAll($limit);
+	}
+
 	public function getCongesEnAttente()
 	{
 		return $this->where('statut', 'en_attente')->findAll();
+	}
+
+	public function getCongesEnAttenteByEmploye($employeId)
+	{
+		return $this->where('employe_id', $employeId)->where('statut', 'en_attente')->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->findAll();
+	}
+
+	public function getCongesApprouvesByEmploye($employeId)
+	{
+		return $this->where('employe_id', $employeId)->where('statut', 'approuve')->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->findAll();
+	}
+
+	public function getCongesRefusesByEmploye($employeId)
+	{
+		return $this->where('employe_id', $employeId)->where('statut', 'refuse')->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->findAll();
+	}
+
+	public function countTotalJours($employeId , $typeCongeId) {
+		return $this->where('employe_id', $employeId)->where('type_conge_id', $typeCongeId)->where('statut', 'approuve')->selectSum('nb_jours')->first()['nb_jours'] ?? 0;
 	}
 
 	public function approuverConge(int $congeId, int $rhId, int $annee, ?string $commentaire = null): bool

@@ -487,3 +487,57 @@ DEBUG - 2026-05-20 08:16:37 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-05-20 08:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-20 08:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-20 08:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:35:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:35:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:38:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 08:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 08:41:23 --> ErrorException: Undefined variable $congesRecents
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 102.
+ 1 APPPATH/Views/employe/Dashboard.php(102): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Dashboard.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(31): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 08:41:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 09:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 09:11:09 --> TypeError: App\Models\SoldeModel::hasSoldeDisponible(): Argument #3 ($annee) must be of type int, null given, called in /home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Controllers/EmployeController.php on line 34
+[Method: GET, Route: dashboard]
+in APPPATH/Models/SoldeModel.php on line 56.
+ 1 APPPATH/Controllers/EmployeController.php(34): App\Models\SoldeModel->hasSoldeDisponible()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 09:11:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 09:11:36 --> ErrorException: Undefined array key "jours_restants"
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 60.
+ 1 APPPATH/Views/employe/Dashboard.php(60): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Dashboard.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(43): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 09:12:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
