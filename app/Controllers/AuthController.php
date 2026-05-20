@@ -34,6 +34,7 @@ class AuthController extends BaseController
             ]);
         }
 
+        // Pas de hash: comparaison directe (SQLite stocke le mot de passe en clair dans ce scénario)
         if (! isset($user['mot_de_passe']) || $user['mot_de_passe'] !== $password) {
             return view('Modal', [
                 'erreur' => 'Email ou mot de passe incorrect',

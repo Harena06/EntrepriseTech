@@ -8,7 +8,7 @@ class RHController extends BaseController
 {
     public function general()
     {
-        return view('welcome_message');
+        return view('Modal', ['page' => 'rh/index']);
     }
 
     public function demandesEnAttente()

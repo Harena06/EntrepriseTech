@@ -1,29 +1,24 @@
 # EntrepriseTech
 
 ## Setup + Bdd
-- [ ] Creation Git
-- [ ] Setup SQLite
-- [ ] Route
-- [ ] Config.php
+- [ok] Creation Git
+- [ok] Setup SQLite
+- [ok] Route
+- [ok] Config.php
 
 ## Base de Donnees
-- Employee
-- Departement
-- Solde 
-- Type Congee
-- Congee
+[ok] - Employee
+[ok] - Departement
+[ok] - Solde 
+[ok] - Type Congee
+[ok] - Congee
 
 ## Authentification
 
 ### Login
-
-- Model
-    - UserModel.php
-- Controller
-    - UserController.php
-        - Login()
-
+[ok] Login
 ### Filtrage Roles
+[ok] 
 - Role User 
 - Role RH
 - Role admin
@@ -44,7 +39,7 @@
 - dashboard
 
 ### Design
-- Modal
+-[ok] Modal
     - Creation Modal.php
-- Integration Template
+-[ok] Integration Template
 - 
