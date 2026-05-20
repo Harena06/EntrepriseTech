@@ -1,24 +1,7 @@
 <section id="page-form-conge" style="margin-top:3rem">
 <div class="app-wrap">
 
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="sidebar-logo-icon"><i class="bi bi-briefcase"></i></div>
-      <div class="sidebar-brand-name">TechMada RH<span>Espace employé</span></div>
-    </div>
-    <ul class="sidebar-nav" style="margin-top:1rem">
-      <li><a href="#page-dashboard-employe"><i class="bi bi-grid-1x2"></i> Tableau de bord</a></li>
-      <li><a href="#page-form-conge" class="active"><i class="bi bi-plus-circle"></i> Nouvelle demande</a></li>
-      <li><a href="#page-mes-conges"><i class="bi bi-calendar3"></i> Mes demandes</a></li>
-      <li><a href="#page-profil-employe"><i class="bi bi-person"></i> Mon profil</a></li>
-    </ul>
-    <div class="sidebar-user">
-      <div class="s-user-row">
-        <div class="avatar av-green">SR</div>
-        <div><div class="user-name">Soa Rakoto</div><div class="user-role">Employé · IT</div></div>
-      </div>
-    </div>
-  </aside>
+  <?php $active = 'create'; echo view('employe/Sidebar'); ?>
 
   <div class="main">
     <div class="topbar">

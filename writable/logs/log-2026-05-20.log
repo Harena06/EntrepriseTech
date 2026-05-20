@@ -1,3 +1,167 @@
 DEBUG - 2026-05-20 05:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-20 05:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-20 05:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 05:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 05:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 05:55:58 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "employe/partials/sidebar.php"
+[Method: GET, Route: index]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/employe/Index.php(6): view()
+ 4 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 5 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 6 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 7 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 8 APPPATH/Controllers/EmployeController.php(10): view()
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-20 05:56:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "employe/sidebar.php"
+[Method: GET, Route: index]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/employe/Index.php(6): view()
+ 4 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 5 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 6 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 7 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 8 APPPATH/Controllers/EmployeController.php(10): view()
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-20 05:56:51 --> ErrorException: Undefined variable $active
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Sidebar.php on line 18.
+ 1 APPPATH/Views/employe/Sidebar.php(18): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Sidebar.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Views/employe/Index.php(6): view()
+ 6 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 7 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 8 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 9 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+10 APPPATH/Controllers/EmployeController.php(10): view()
+11 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+12 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+14 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+16 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 05:59:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:03:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:24:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:26:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:38:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:41:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:41:13 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 64.
+ 1 APPPATH/Views/employe/Index.php(64): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:45:45 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 55.
+ 1 APPPATH/Views/employe/Index.php(55): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:45:47 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 55.
+ 1 APPPATH/Views/employe/Index.php(55): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:45:48 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 55.
+ 1 APPPATH/Views/employe/Index.php(55): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:45:48 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 55.
+ 1 APPPATH/Views/employe/Index.php(55): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 06:45:50 --> ErrorException: Undefined array key "type_conge"
+[Method: GET, Route: index]
+in APPPATH/Views/employe/Index.php on line 55.
+ 1 APPPATH/Views/employe/Index.php(55): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Index.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(15): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 06:45:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:50:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:50:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:50:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:53:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 06:53:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

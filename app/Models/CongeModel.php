@@ -46,7 +46,7 @@ class CongeModel extends Model
 
 	public function getCongesByEmploye($employeId)
 	{
-		return $this->where('employe_id', $employeId)->findAll();
+		return $this->where('employe_id', $employeId)->join('Employes', 'Conges.employe_id = Employes.id')->join('Types_conges', 'Conges.type_conge_id = Types_conges.id')->findAll();
 	}
 
 	public function getCongesEnAttente()

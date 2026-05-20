@@ -3,9 +3,23 @@
 namespace App\Controllers;
 
 use App\Models\CongeModel;
-
+use App\Models\TypeCongeModel;
+use App\Models\EmployeModel;
 class CongeController extends BaseController
 {
+    public function formulaireDemande()
+    {
+
+        $user = session()->get('user');
+        if (! $user) {
+            return redirect()->to('/');
+        }
+
+        return view('Modal', [
+            'page' => 'employe/Create',
+            'user' => $user,
+        ]);
+    }
     public function mesDemandes()
     {
         $user = session()->get('user');

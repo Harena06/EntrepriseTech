@@ -76,7 +76,7 @@ code,pre,.mono{font-family:'DM Mono',monospace}
 .f-error{font-size:.75rem;color:var(--danger);margin-top:4px}
 .btn-primary{background:var(--forest);color:var(--white);border:none;border-radius:8px;padding:11px 20px;font-weight:500;font-size:.9rem;cursor:pointer;transition:background .15s;font-family:'DM Sans',sans-serif;width:100%}
 .btn-primary:hover{background:var(--forest2)}
-.auth-footer{text-align:center;margin-top:1.25rem;font-size:.8rem;color:var(--muted)}
+.auth-footer{text-align:center  ;margin-top:1.25rem;font-size:.8rem;color:var(--muted)}
 .auth-footer a{color:var(--forest);text-decoration:none;font-weight:500}
 .auth-roles{display:flex;flex-direction:column;gap:8px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1)}
 .role-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:10px}
