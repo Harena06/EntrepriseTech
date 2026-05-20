@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CongeModel;
 use App\Models\TypeCongeModel;
 use App\Models\EmployeModel;
+use App\Models\SoldeModel;
 class CongeController extends BaseController
 {
     public function formulaireDemande()
@@ -85,14 +86,28 @@ class CongeController extends BaseController
                 'error' => 'Champs obligatoires manquants.',
             ]);
         }
-
-        if (! $model->db->table('Conges')->insert($data)) {
-            return $this->response->setStatusCode(400)->setJSON([
-                'error' => 'Demande invalide',
-                'details' => $model->db->error(),
+        $db = \Config\Database::connect();
+        try{
+            $db->transStart();
+            $model->db->table('Conges')->insert($data);
+            $soldeModel = new SoldeModel();
+            $getSolde = $soldeModel->getSolde($user['id'] , $data['type_conge_id'] , (int) date('Y'));
+            $soldeUpdate = $soldeModel->updateJoursPris(
+                (int) $getSolde['id'],
+                (int) $data['nb_jours']
+            );
+            if (! $soldeUpdate) {
+                throw new \Exception('Impossible de mettre a jour le solde.');
+            }
+            $db->transComplete();
+        } catch (\Exception $e) {
+            $db->transRollback();
+            return $this->response->setStatusCode(500)->setJSON([
+                'error' => 'Une erreur est survenue lors de la soumission de la demande.',
+                'details' => $e->getMessage(),
             ]);
         }
-
+    
         return redirect()->to('/nouvelle-Demande')->with('success', 'Demande de congé soumise avec succès.');
     }
 

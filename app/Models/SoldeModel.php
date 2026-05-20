@@ -53,7 +53,7 @@ class SoldeModel extends Model
         ])->first();
     }
 
-    public function hasSoldeDisponible(int $employeId, int $typeCongeId, int $annee, int $nbJours): bool
+    public function hasSoldeDisponible(int $employeId, int $typeCongeId, int $annee)
     {
         $solde = $this->getSolde($employeId, $typeCongeId, $annee);
         if (! $solde) {
@@ -62,7 +62,16 @@ class SoldeModel extends Model
 
         $restant = (int) $solde['jours_attribues'] - (int) $solde['jours_pris'];
 
-        return $restant >= $nbJours;
+        return $restant;
+    }
+
+    public function getNombreJoursPrix(int $employeId , int $typeCongeId , int $annee) {
+        $solde = $this->getSolde($employeId, $typeCongeId, $annee);
+        if (! $solde) {
+            return false;
+        }
+
+        return $solde['jours_pris'];
     }
 
     public function updateJoursPris(int $soldeId, int $deltaJours): bool

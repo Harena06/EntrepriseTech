@@ -29,10 +29,12 @@
             $typesConge = new TypeCongeModel();
             $SoldeModel = new SoldeModel();
             $nbJoursPris = [];
-            // foreach ($typesConge->findAll() as $type) {
-            //     $annee = $SoldeModel->getAnneeSolde($user['id'], $type['id']);
-            //     $nbJoursPris[$type['id']] = $SoldeModel->hasSoldeDisponible($user['id'] , $type['id'], $annee, 0);
-            // }
+            $nbJoursrestants = [];
+            foreach ($typesConge->findAll() as $type) {
+                $nbJoursrestants[$type['id']] = $SoldeModel->hasSoldeDisponible($user['id'], $type['id'] , (int)date('Y'));
+                $nbJoursPris[$type['id']] = $SoldeModel->getNombreJoursPrix($user['id'], $type['id'] , (int)date('Y'));
+            }
+
             $typesConge = $typesConge->findAll();
             $employeId = session()->get('user')['id'] ?? null;
             $congeEnAttente = $CongeEnAttente->getCongesEnAttenteByEmploye($employeId);
@@ -49,7 +51,8 @@
                 'congesRefuse' => $congerefuse  ,
                 'congesLimited' => $congeLimited,
                 'typesConge' => $typesConge,
-                'nbJoursPris' => $nbJoursPris
+                'nbJoursPris' => $nbJoursPris,
+                'nbJoursrestants' => $nbJoursrestants
             ]);
         }
     }

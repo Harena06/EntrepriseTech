@@ -541,3 +541,146 @@ in APPPATH/Views/employe/Dashboard.php on line 60.
 11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 DEBUG - 2026-05-20 09:12:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:04:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:04:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:07:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:16:51 --> TypeError: App\Models\SoldeModel::hasSoldeDisponible(): Argument #2 ($typeCongeId) must be of type int, array given, called in /home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Controllers/EmployeController.php on line 33
+[Method: GET, Route: dashboard]
+in APPPATH/Models/SoldeModel.php on line 56.
+ 1 APPPATH/Controllers/EmployeController.php(33): App\Models\SoldeModel->hasSoldeDisponible()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:17:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:17:35 --> TypeError: Cannot access offset of type array on array
+[Method: GET, Route: dashboard]
+in APPPATH/Controllers/EmployeController.php on line 33.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:17:55 --> ErrorException: Trying to access array offset on true
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 59.
+ 1 APPPATH/Views/employe/Dashboard.php(59): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Dashboard.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(43): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:18:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:21:51 --> ErrorException: Trying to access array offset on true
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 59.
+ 1 APPPATH/Views/employe/Dashboard.php(59): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Dashboard.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(43): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:21:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:21:53 --> ErrorException: Trying to access array offset on true
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 59.
+ 1 APPPATH/Views/employe/Dashboard.php(59): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/Modal.php(251): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/employe/Dashboard.php')
+ 3 SYSTEMPATH/View/View.php(240): include('/home/tendry/itu/S4/MR_ROJO/Examen/EntrepriseTech/app/Views/Modal.php')
+ 4 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 5 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/EmployeController.php(43): view()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:22:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:24:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:26:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:26:44 --> ParseError: Unclosed '{' on line 56
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 125.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/EmployeController.php(43): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:26:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:27:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-20 14:27:55 --> ParseError: Unclosed '{' on line 56
+[Method: GET, Route: dashboard]
+in APPPATH/Views/employe/Dashboard.php on line 125.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/EmployeController.php(43): view()
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\EmployeController->dashboard()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-05-20 14:28:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:28:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:28:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:29:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:29:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:31:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:33:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:40:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:52:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:52:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:54:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:56:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:56:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:56:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:56:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:57:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:57:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:57:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:57:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:57:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:58:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:58:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-20 14:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
