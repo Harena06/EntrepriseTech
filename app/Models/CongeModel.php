@@ -51,7 +51,31 @@ class CongeModel extends Model
 
 	public function getCongesEnAttente()
 	{
-		return $this->where('statut', 'en_attente')->findAll();
+		return $this->db->table('Conges c')
+			->select('c.*, e.nom AS employe_nom, d.nom AS employe_departement, tc.libelle AS type_conge_nom, solde.jours_attribues AS solde_attribue, solde.jours_pris AS solde_pris, (solde.jours_attribues - solde.jours_pris) AS solde_restant', false)
+			->join('Employes e', 'e.id = c.employe_id')
+			->join('Departements d', 'd.id = e.departement_id', 'left')
+			->join('Types_conges tc', 'tc.id = c.type_conge_id', 'left')
+			->join('Soldes solde', 'solde.employe_id = c.employe_id AND solde.type_conge_id = c.type_conge_id AND solde.annee = CAST(strftime(\'%Y\', c.date_debut) AS INTEGER)', 'left')
+			->where('c.statut', 'en_attente')
+			->orderBy('c.id', 'DESC')
+			->get()
+			->getResultArray();
+	}
+
+		public function getCongesApprouver()
+	{
+		return $this->db->table('Conges c')
+			->select('c.*, e.nom AS employe_nom, d.nom AS employe_departement, tc.libelle AS type_conge_nom, rh.nom AS rh_nom, solde.jours_attribues AS solde_attribue, solde.jours_pris AS solde_pris, (solde.jours_attribues - solde.jours_pris) AS solde_restant', false)
+			->join('Employes e', 'e.id = c.employe_id')
+			->join('Employes rh', 'rh.id = c.traite_par', 'left')
+			->join('Departements d', 'd.id = e.departement_id', 'left')
+			->join('Types_conges tc', 'tc.id = c.type_conge_id', 'left')
+			->join('Soldes solde', 'solde.employe_id = c.employe_id AND solde.type_conge_id = c.type_conge_id AND solde.annee = CAST(strftime(\'%Y\', c.date_debut) AS INTEGER)', 'left')
+			->where('c.statut', 'approuve')
+			->orderBy('c.id', 'DESC')
+			->get()
+			->getResultArray();
 	}
 
 	public function approuverConge(int $congeId, int $rhId, int $annee, ?string $commentaire = null): bool
@@ -76,12 +100,8 @@ class CongeModel extends Model
 			return false;
 		}
 
-		$okConge = $this->update($congeId, [
-			'statut' => 'approuve',
-			'commentaire_rh' => $commentaire ?? '',
-			'traite_par' => $rhId,
-		]);
-
+		$sql = "UPDATE Conges SET statut = ?, commentaire_rh = ?, traite_par = ? WHERE id = ?";
+		$okConge = $this->db->query($sql, ['approuve', $commentaire ?? '', $rhId, $congeId]);
 		if (! $okConge) {
 			$this->db->transRollback();
 			return false;
@@ -105,11 +125,9 @@ class CongeModel extends Model
 			return false;
 		}
 
-		return (bool) $this->update($congeId, [
-			'statut' => 'refuse',
-			'commentaire_rh' => $commentaire ?? '',
-			'traite_par' => $rhId,
-		]);
+		$sql = "UPDATE Conges SET statut = ?, commentaire_rh = ?, traite_par = ? WHERE id = ?";
+		$result = $this->db->query($sql, ['rejete', $commentaire ?? '', $rhId, $congeId]);
+		return $result !== false;
 	}
 
 	public function annulerConge(int $congeId, int $annee): bool

@@ -10,6 +10,8 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/bo/dashboard/general', 'BOController::general');
 $routes->get('/rh/dashboard/general', 'RHController::general');
+$routes->post('/rh/conges/approuver/(:num)', 'RHController::approuver/$1');
+$routes->post('/rh/conges/refuser/(:num)', 'RHController::refuser/$1');
 $routes->get('/index' , 'EmployeController::index');
 $routes->post('/connexion', 'AuthController::login');
 $routes->get('/deconnexion', 'AuthController::logout');
