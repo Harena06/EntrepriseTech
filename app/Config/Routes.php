@@ -10,6 +10,8 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 $routes->get('/bo/dashboard/general', 'BOController::general');
 $routes->get('/rh/dashboard/general', 'RHController::general');
+$routes->post('/rh/conges/approuver/(:num)', 'RHController::approuver/$1');
+$routes->post('/rh/conges/refuser/(:num)', 'RHController::refuser/$1');
 $routes->get('/index' , 'EmployeController::index');
 $routes->post('/connexion', 'AuthController::login');
 $routes->get('/deconnexion', 'AuthController::logout');
@@ -19,13 +21,6 @@ $routes->get('/conges', 'CongeController::mesDemandes');
 $routes->post('/conges/demander', 'CongeController::demander');
 $routes->post('/conges/annuler/(:num)', 'CongeController::annuler/$1');
 $routes->get('/soldes', 'SoldeController::mesSoldes');
-
-// RH
-$routes->get('/rh/demandes', 'RHController::demandesEnAttente');
-$routes->post('/rh/conges/approuver/(:num)', 'RHController::approuver/$1');
-$routes->post('/rh/conges/refuser/(:num)', 'RHController::refuser/$1');
-$routes->get('/rh/conges/filtrer', 'RHController::filtrer');
-$routes->get('/rh/soldes/(:num)', 'SoldeController::soldeEmploye/$1');
 
 // Admin
 $routes->get('/admin/employes', 'AdminController::employes');

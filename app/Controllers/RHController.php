@@ -8,58 +8,68 @@ class RHController extends BaseController
 {
     public function general()
     {
-        return view('Modal', ['page' => 'rh/index']);
-    }
-
-    public function demandesEnAttente()
-    {
         $rh = session()->get('rh') ?? session()->get('admin');
         if (! $rh) {
             return redirect()->to('/');
         }
 
         $model = new CongeModel();
-
-        return $this->response->setJSON($model->getCongesEnAttente());
+        $conges = $model->getCongesEnAttente();
+        $congesapprouver = $model->getCongesApprouver();
+        return view('Modal', ['page' => 'rh/index', 'conges' => $conges, 'congesapprouver' => $congesapprouver]);
     }
 
     public function approuver($id)
     {
-        $rh = session()->get('rh') ?? session()->get('admin');
-        if (! $rh) {
-            return redirect()->to('/');
+        try {
+            $rh = session()->get('rh') ?? session()->get('admin');
+            if (! $rh) {
+                return $this->response->setStatusCode(401)->setJSON(['error' => 'Non authentifié']);
+            }
+
+            $annee = (int) $this->request->getPost('annee');
+            if (! $annee) {
+                $annee = (int) date('Y');
+            }
+
+            $commentaire = (string) $this->request->getPost('commentaire');
+
+            $model = new CongeModel();
+            $approuverConge = $model->approuverConge((int) $id, (int) $rh['id'], $annee, $commentaire);
+            
+            if (! $approuverConge) {
+                return $this->response->setStatusCode(400)->setJSON(['error' => 'Approbation impossible']);
+            }
+            
+            return $this->response->setJSON(['success' => true]);
+        } catch (\Exception $e) {
+            log_message('error', 'RHController::approuver - ' . $e->getMessage());
+            return $this->response->setStatusCode(500)->setJSON(['error' => $e->getMessage()]);
         }
-
-        $annee = (int) $this->request->getPost('annee');
-        if (! $annee) {
-            $annee = (int) date('Y');
-        }
-
-        $commentaire = (string) $this->request->getPost('commentaire');
-
-        $model = new CongeModel();
-        if (! $model->approuverConge((int) $id, (int) $rh['id'], $annee, $commentaire)) {
-            return $this->response->setStatusCode(400)->setJSON(['error' => 'Approbation impossible']);
-        }
-
-        return $this->response->setJSON(['success' => true]);
     }
 
     public function refuser($id)
     {
-        $rh = session()->get('rh') ?? session()->get('admin');
-        if (! $rh) {
-            return redirect()->to('/');
+        try {
+            $rh = session()->get('rh') ?? session()->get('admin');
+            if (! $rh) {
+                return $this->response->setStatusCode(401)->setJSON(['error' => 'Non authentifié']);
+            }
+
+            $commentaire = (string) $this->request->getPost('commentaire');
+
+            $model = new CongeModel();
+            $refuserConge = $model->refuserConge((int) $id, (int) $rh['id'], $commentaire);
+            
+            if (! $refuserConge) {
+                return $this->response->setStatusCode(400)->setJSON(['error' => 'Refus impossible']);
+            }
+            
+            return $this->response->setJSON(['success' => true]);
+        } catch (\Exception $e) {
+            log_message('error', 'RHController::refuser - ' . $e->getMessage());
+            return $this->response->setStatusCode(500)->setJSON(['error' => $e->getMessage()]);
         }
-
-        $commentaire = (string) $this->request->getPost('commentaire');
-
-        $model = new CongeModel();
-        if (! $model->refuserConge((int) $id, (int) $rh['id'], $commentaire)) {
-            return $this->response->setStatusCode(400)->setJSON(['error' => 'Refus impossible']);
-        }
-
-        return $this->response->setJSON(['success' => true]);
     }
 
     public function filtrer()

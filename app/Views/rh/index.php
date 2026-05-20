@@ -1,4 +1,4 @@
-<section id="page-liste-rh" style="margin-top:3rem">
+<section id="page-liste-rh" style="margin-top:3rem" data-approve-url="<?php echo site_url('/rh/conges/approuver'); ?>" data-refuse-url="<?php echo site_url('/rh/conges/refuser'); ?>">
 <div class="app-wrap">
 
   <aside class="sidebar">
@@ -12,7 +12,7 @@
       <li>
         <a href="#page-liste-rh" class="active">
           <i class="bi bi-inbox"></i> Demandes à traiter
-          <span class="nav-badge alert">4</span>
+          <span class="nav-badge alert"><?php echo count($conges); ?></span>
         </a>
       </li>
       <li><a href="#page-liste-rh"><i class="bi bi-archive"></i> Historique</a></li>
@@ -21,7 +21,7 @@
     <div class="sidebar-user">
       <div class="s-user-row">
         <div class="avatar av-blue">MR</div>
-        <div><div class="user-name">Marie Rabe</div><div class="user-role">Responsable RH</div></div>
+        <div><div class="user-name"><?php echo session()->get('rh')['nom']?></div><div class="user-role">Responsable RH</div></div>
         <a href="#page-login" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i></a>
       </div>
     </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="topbar-actions">
         <span style="font-size:.8rem;color:var(--muted);background:var(--warn-bg);border:1px solid var(--warn-br);border-radius:6px;padding:5px 10px;display:flex;align-items:center;gap:5px;color:var(--warn)">
-          <i class="bi bi-hourglass-split"></i> 4 en attente
+          <i class="bi bi-hourglass-split"></i> <?php echo count($conges); ?> en attente
         </span>
       </div>
     </div>
@@ -70,102 +70,81 @@
           </thead>
           <tbody>
             <!-- En attente — actions disponibles -->
-            <tr>
+
+              <?php foreach ($conges as $conge): ?>
+                <tr>
+                  <td>
+                    <div class="profile-row">
+                      <div class="avatar av-green" style="width:32px;height:32px;font-size:.7rem"><?php echo esc((string) ($conge['employe_nom'])); ?></div>
+                      <div class="profile-info">
+                        <div class="pname"><?php echo esc($conge['employe_nom']); ?></div>
+                        <div class="pdept"><?php echo esc($conge['employe_departement']); ?></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="type-badge t-annuel"><?php echo esc($conge['type_conge_nom']); ?></span></td>
+                  <td class="td-muted" style="font-size:.8rem"><?php echo esc($conge['date_debut']); ?> - <?php echo esc($conge['date_fin']); ?></td>
+                  <td class="td-mono"><?php echo esc($conge['nb_jours']); ?> j</td>
+                  <td>
+                    <span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--success);font-weight:500"><?php echo esc((int)$conge['solde_restant']); ?></span>
+                    <span style="font-size:.72rem;color:var(--muted)"> dispo</span>
+                  </td>
+                  <td><span class="statut s-attente"><?php echo esc($conge['statut']); ?></span></td>
+                  <td>
+                    <div class="action-btns">
+                      <button type="button" class="btn-sm btn-approve js-approve" data-conge-id="<?php echo esc((string) $conge['id']); ?>"><i class="bi bi-check-lg"></i> Approuver</button>
+                      <button type="button" class="btn-sm btn-refuse js-refuse" data-conge-id="<?php echo esc((string) $conge['id']); ?>" data-employe-nom="<?php echo esc($conge['employe_nom']); ?>" data-type-conge="<?php echo esc($conge['type_conge_nom']); ?>" data-date-debut="<?php echo esc($conge['date_debut']); ?>" data-date-fin="<?php echo esc($conge['date_fin']); ?>" data-nb-jours="<?php echo esc((string) $conge['nb_jours']); ?>"><i class="bi bi-x-lg"></i> Refuser</button>
+                    </div>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+              
+              <?php foreach ($congesapprouver as $conge): ?>
+                 <tr>
               <td>
                 <div class="profile-row">
-                  <div class="avatar av-green" style="width:32px;height:32px;font-size:.7rem">SR</div>
+                  <div class="avatar av-green" style="width:32px;height:32px;font-size:.7rem"><?php echo esc((string) ($conge['employe_nom'])); ?></div>
                   <div class="profile-info">
-                    <div class="pname">Soa Rakoto</div>
-                    <div class="pdept">IT · 23 juin → 27 juin</div>
-                  </div>
+                  <div class="profile-info"><div class="pname"><?php echo esc($conge['employe_nom']); ?></div>
+                  <div class="pdept"><?php echo esc($conge['employe_departement']); ?></div></div>
                 </div>
               </td>
-              <td><span class="type-badge t-annuel">Annuel</span></td>
-              <td class="td-muted" style="font-size:.8rem">23/06 – 27/06/2025</td>
-              <td class="td-mono">5 j</td>
-              <td>
-                <span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--success);font-weight:500">18 j</span>
-                <span style="font-size:.72rem;color:var(--muted)"> dispo</span>
-              </td>
-              <td><span class="statut s-attente">en attente</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="btn-sm btn-approve"><i class="bi bi-check-lg"></i> Approuver</button>
-                  <button class="btn-sm btn-refuse"><i class="bi bi-x-lg"></i> Refuser</button>
-                </div>
-              </td>
+              <td><span class="type-badge t-maladie"><?php echo esc($conge['type_conge_nom']); ?></span></td>
+              <td class="td-muted" style="font-size:.8rem"><?php echo esc($conge['date_debut']); ?> - <?php echo esc($conge['date_fin']); ?></td>
+              <td class="td-mono"><?php echo esc($conge['nb_jours']); ?> j</td>
+              <td><span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--muted)"><?php echo esc((int) $conge['solde_restant']); ?></span></td>
+              <td><span class="statut s-approuvee"><?php echo esc($conge['statut']); ?></span></td>
+              <td><span class="td-muted" style="font-size:.75rem"><?php echo esc($conge['rh_nom'] ?? '-'); ?></span></td>
             </tr>
-            <tr>
-              <td>
-                <div class="profile-row">
-                  <div class="avatar av-amber" style="width:32px;height:32px;font-size:.7rem">TF</div>
-                  <div class="profile-info">
-                    <div class="pname">Tsiry Fidy</div>
-                    <div class="pdept">Finance</div>
-                  </div>
-                </div>
-              </td>
-              <td><span class="type-badge t-maladie">Maladie</span></td>
-              <td class="td-muted" style="font-size:.8rem">18/06 – 19/06/2025</td>
-              <td class="td-mono">2 j</td>
-              <td>
-                <span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--warn);font-weight:500">1 j</span>
-                <span style="font-size:.72rem;color:var(--danger)"> ⚠ insuffisant</span>
-              </td>
-              <td><span class="statut s-attente">en attente</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="btn-sm btn-approve" disabled style="opacity:.4;cursor:not-allowed"><i class="bi bi-check-lg"></i> Approuver</button>
-                  <button class="btn-sm btn-refuse"><i class="bi bi-x-lg"></i> Refuser</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-row">
-                  <div class="avatar av-blue" style="width:32px;height:32px;font-size:.7rem">HA</div>
-                  <div class="profile-info">
-                    <div class="pname">Haja Andria</div>
-                    <div class="pdept">Marketing</div>
-                  </div>
-                </div>
-              </td>
-              <td><span class="type-badge t-annuel">Annuel</span></td>
-              <td class="td-muted" style="font-size:.8rem">30/06 – 04/07/2025</td>
-              <td class="td-mono">5 j</td>
-              <td>
-                <span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--success);font-weight:500">22 j</span>
-                <span style="font-size:.72rem;color:var(--muted)"> dispo</span>
-              </td>
-              <td><span class="statut s-attente">en attente</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="btn-sm btn-approve"><i class="bi bi-check-lg"></i> Approuver</button>
-                  <button class="btn-sm btn-refuse"><i class="bi bi-x-lg"></i> Refuser</button>
-                </div>
-              </td>
-            </tr>
-            <!-- Déjà traitées -->
-            <tr>
-              <td>
-                <div class="profile-row">
-                  <div class="avatar av-green" style="width:32px;height:32px;font-size:.7rem">SR</div>
-                  <div class="profile-info"><div class="pname">Soa Rakoto</div><div class="pdept">IT</div></div>
-                </div>
-              </td>
-              <td><span class="type-badge t-maladie">Maladie</span></td>
-              <td class="td-muted" style="font-size:.8rem">02/06 – 03/06/2025</td>
-              <td class="td-mono">2 j</td>
-              <td><span style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--muted)">—</span></td>
-              <td><span class="statut s-approuvee">approuvée</span></td>
-              <td><span class="td-muted" style="font-size:.75rem">Traité par Marie R.</span></td>
-            </tr>
+              <?php endforeach; ?>
           </tbody>
         </table>
       </div>
 
-      <!-- Modal refus (inline, visible ici pour le template) -->
-      <div style="margin-top:1.5rem">
+      <!-- Modal refus (dynamique) -->
+      <div id="refus-panel" style="margin-top:1.5rem;display:none">
+        <div class="form-section" style="border-color:var(--danger-br);background:var(--danger-bg)">
+          <h3 style="color:var(--danger)"><i class="bi bi-x-circle"></i> Confirmer le refus — <span id="refus-employe-nom"></span></h3>
+          <div style="font-size:.875rem;color:var(--ink);margin-bottom:1rem">
+            Demande de <strong id="refus-nb-jours"></strong> jours <span id="refus-periode"></span> · Type : <span id="refus-type-conge"></span><br>
+            <span style="font-size:.8rem;color:var(--danger)" id="refus-solde-info"></span>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Commentaire pour l'employé (optionnel)</label>
+            <textarea id="refus-commentaire" class="f-textarea" placeholder="Ex : Solde insuffisant, veuillez contacter les RH pour un congé sans solde."></textarea>
+          </div>
+          <div class="form-actions">
+            <button id="refus-confirm" type="button" class="btn-sm btn-refuse" style="padding:9px 16px;font-size:.875rem"><i class="bi bi-x-lg"></i> Confirmer le refus</button>
+            <button id="refus-cancel" type="button" class="btn-secondary"><i class="bi bi-arrow-left"></i> Annuler</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-app"><i class="bi bi-c-circle"></i> 2025 <span>TechMada RH</span></div>
+       
+      <?php ?>
+      <!-- <div style="margin-top:1.5rem">
         <div class="form-section" style="border-color:var(--danger-br);background:var(--danger-bg)">
           <h3 style="color:var(--danger)"><i class="bi bi-x-circle"></i> Confirmer le refus — Tsiry Fidy</h3>
           <div style="font-size:.875rem;color:var(--ink);margin-bottom:1rem">
@@ -184,9 +163,8 @@
       </div>
 
     </div>
-    <div class="footer-app"><i class="bi bi-c-circle"></i> 2025 <span>TechMada RH</span></div>
+    <div class="footer-app"><i class="bi bi-c-circle"></i> 2025 <span>TechMada RH</span></div> -->
   </div>
-
 </div>
 </section>
-
+<script src="/assets/js/rh.js"></script>
