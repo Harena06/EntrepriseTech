@@ -53,16 +53,18 @@
       <div class="data-card">
         <div class="data-card-head"><h3>Mes soldes de congés — 2025</h3></div>
         <div style="padding:1rem 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-
-          <!-- <div class="solde-card" style="margin:0">
-            <div class="solde-header">
-              <span class="solde-type">Congé annuel</span>
-              <span class="solde-nums"><strong>18</strong> / 30 j</span>
-            </div>
-            <div class="solde-bar"><div class="solde-fill" style="width:60%"></div></div>
-            <div class="solde-label">18 jours restants · 12 pris</div>
-          </div>
+        <?php  foreach($typesConge as $n) {?>
           <div class="solde-card" style="margin:0">
+            <div class="solde-header">
+              <span class="solde-type"><?= $n['libelle']?></span>
+              <span class="solde-nums"><strong><?= $nbJoursPris[$n['id']]?></strong> / <?= $n['jours_annuels']?> j</span>
+            </div>
+            <div class="solde-bar"><div class="solde-fill" style="width:<?=($nbJoursPris[$n['id']]/$n['jours_annuels']) * 100?>%"></div></div>
+            <div class="solde-label"><?= $nbJoursrestants[$n['id']]?> jours restants · <?= $nbJoursPris[$n['id']]?> pris</div>
+          </div>
+
+          <?php } ?>
+          <!-- <div class="solde-card" style="margin:0">
             <div class="solde-header">
               <span class="solde-type">Congé maladie</span>
               <span class="solde-nums"><strong>8</strong> / 10 j</span>
