@@ -79,4 +79,14 @@ class SoldeModel extends Model
 
         return $this->update($soldeId, ['jours_pris' => $nouveau]);
     }
+
+    public function getAnneeSolde(int $employeId, int $typeCongeId): ?int
+    {
+        $solde = $this->where([
+            'employe_id' => $employeId,
+            'type_conge_id' => $typeCongeId,
+        ])->orderBy('annee', 'DESC')->first();
+
+        return $solde ? (int) $solde['annee'] : null;
+    }
 }
