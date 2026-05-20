@@ -90,15 +90,15 @@ class CongeController extends BaseController
         try{
             $db->transStart();
             $model->db->table('Conges')->insert($data);
-            $soldeModel = new SoldeModel();
-            $getSolde = $soldeModel->getSolde($user['id'] , $data['type_conge_id'] , (int) date('Y'));
-            $soldeUpdate = $soldeModel->updateJoursPris(
-                (int) $getSolde['id'],
-                (int) $data['nb_jours']
-            );
-            if (! $soldeUpdate) {
-                throw new \Exception('Impossible de mettre a jour le solde.');
-            }
+            // $soldeModel = new SoldeModel();
+            // $getSolde = $soldeModel->getSolde($user['id'] , $data['type_conge_id'] , (int) date('Y'));
+            // $soldeUpdate = $soldeModel->updateJoursPris(
+            //     (int) $getSolde['id'],
+            //     (int) $data['nb_jours']
+            // );
+            // if (! $soldeUpdate) {
+            //     throw new \Exception('Impossible de mettre a jour le solde.');
+            // }
             $db->transComplete();
         } catch (\Exception $e) {
             $db->transRollback();
