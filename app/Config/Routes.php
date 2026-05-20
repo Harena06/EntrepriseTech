@@ -20,6 +20,7 @@ $routes->post('/conges/demander', 'CongeController::demander');
 $routes->post('/conges/annuler/(:num)', 'CongeController::annuler/$1');
 $routes->get('/soldes', 'SoldeController::mesSoldes');
 $routes->get('/nouvelle-Demande', 'CongeController::formulaireDemande');
+$routes->get('/calendar', 'CalendarController::index');
 // RH
 $routes->get('/rh/demandes', 'RHController::demandesEnAttente');
 $routes->post('/rh/conges/approuver/(:num)', 'RHController::approuver/$1');

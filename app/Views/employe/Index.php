@@ -1,7 +1,7 @@
 <section id="page-mes-conges" style="margin-top:3rem">
 <div class="app-wrap">
 
-  <?php $active = 'index'; echo view('employe/Sidebar'); ?>
+  <?php  echo view('employe/Sidebar'); ?>
 
   <div class="main">
     <div class="topbar">

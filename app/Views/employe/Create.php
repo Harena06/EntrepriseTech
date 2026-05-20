@@ -172,7 +172,7 @@ function calculerJours() {
 
         const difference = fin - debut;
 
-        const jours = (difference / (1000 * 60 * 60 * 24)) + 1;
+        const jours = (difference / (1000 * 60 * 60 * 24));
 
         if(jours > 0){
             nbJours.innerText = jours;

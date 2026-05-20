@@ -72,7 +72,7 @@ class CongeController extends BaseController
             try {
                 $start = new \DateTime($data['date_debut']);
                 $end = new \DateTime($data['date_fin']);
-                $data['nb_jours'] = (int) $start->diff($end)->days + 1;
+                $data['nb_jours'] = (int) $start->diff($end)->days;
             } catch (\Exception $e) {
                 return $this->response->setStatusCode(400)->setJSON([
                     'error' => 'Dates invalides',
