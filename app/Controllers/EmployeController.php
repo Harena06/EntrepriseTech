@@ -14,7 +14,9 @@
             $conge = $congeModel->getCongesByEmploye($employeId);
             return view('Modal', [
             'page' => 'employe/Index', 
-            'conges' => $conge
+            'conges' => $conge,
+            'active' => 'index',
+            'user' => session()->get('user')
             ]);
         }
     }

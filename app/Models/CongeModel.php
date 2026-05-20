@@ -22,7 +22,7 @@ class CongeModel extends Model
 		'date_debut' => 'required|valid_date',
 		'date_fin' => 'required|valid_date',
 		'nb_jours' => 'required|integer|greater_than[0]',
-		'motif' => 'required|string',
+		'motif' => 'permit_empty|string',
 		'statut' => 'required|in_list[en_attente,approuve,rejete,annule]',
 		'commentaire_rh' => 'permit_empty|string',
 		'traite_par' => 'permit_empty|integer'

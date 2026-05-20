@@ -23,12 +23,13 @@ $active = $active ?? 'dashboard';
       </a>
     </li>
     <li><a href="#page-profil-employe" <?= $active === 'profile' ? 'class="active"' : '' ?>><i class="bi bi-person"></i> Mon profil</a></li>
+    <li><a href="/calendar" <?= $active === 'calendar' ? 'class="active"' : '' ?>><i class="bi bi-calendar"></i> Mon calendrier</a></li>
   </ul>
   <div class="sidebar-user">
     <div class="s-user-row">
       <div class="avatar av-green">SR</div>
       <div>
-        <div class="user-name">Soa Rakoto</div>
+        <div class="user-name"><?php echo $user['nom'] ?? 'Utilisateur'; ?></div>
         <div class="user-role">Employé · IT</div>
       </div>
       <a href="#page-login" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem" title="Déconnexion"><i class="bi bi-box-arrow-right"></i></a>

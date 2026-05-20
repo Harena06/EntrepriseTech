@@ -8,8 +8,9 @@ use App\Models\EmployeModel;
 class CongeController extends BaseController
 {
     public function formulaireDemande()
-    {
-
+    {   
+        $typeCongeModel = new TypeCongeModel();
+        $typesConge = $typeCongeModel->findAll();
         $user = session()->get('user');
         if (! $user) {
             return redirect()->to('/');
@@ -18,6 +19,8 @@ class CongeController extends BaseController
         return view('Modal', [
             'page' => 'employe/Create',
             'user' => $user,
+            'typesConge' => $typesConge,
+            'active' => 'create'
         ]);
     }
     public function mesDemandes()
@@ -42,26 +45,55 @@ class CongeController extends BaseController
 
         $model = new CongeModel();
 
+        $payload = $this->request->getPost();
+        if (empty($payload)) {
+            $payload = (array) $this->request->getJSON(true);
+        }
+
+        if (empty($payload)) {
+            return $this->response->setStatusCode(400)->setJSON([
+                'error' => 'Aucune donnee recue.',
+            ]);
+        }
+
         $data = [
             'employe_id' => (int) $user['id'],
-            'type_conge_id' => (int) $this->request->getPost('type_conge_id'),
-            'date_debut' => (string) $this->request->getPost('date_debut'),
-            'date_fin' => (string) $this->request->getPost('date_fin'),
-            'nb_jours' => (int) $this->request->getPost('nb_jours'),
-            'motif' => (string) $this->request->getPost('motif'),
+            'type_conge_id' => (int) ($payload['type_conge_id'] ?? 0),
+            'date_debut' => (string) ($payload['date_debut'] ?? ''),
+            'date_fin' => (string) ($payload['date_fin'] ?? ''),
+            'nb_jours' => (int) ($payload['nb_jours'] ?? 0),
+            'motif' => trim((string) ($payload['motif'] ?? '')),
             'statut' => 'en_attente',
             'commentaire_rh' => null,
             'traite_par' => null,
         ];
 
-        if (! $model->insert($data)) {
+        if ($data['nb_jours'] <= 0 && $data['date_debut'] !== '' && $data['date_fin'] !== '') {
+            try {
+                $start = new \DateTime($data['date_debut']);
+                $end = new \DateTime($data['date_fin']);
+                $data['nb_jours'] = (int) $start->diff($end)->days + 1;
+            } catch (\Exception $e) {
+                return $this->response->setStatusCode(400)->setJSON([
+                    'error' => 'Dates invalides',
+                ]);
+            }
+        }
+
+        if ($data['type_conge_id'] <= 0 || $data['date_debut'] === '' || $data['date_fin'] === '' || $data['nb_jours'] <= 0) {
             return $this->response->setStatusCode(400)->setJSON([
-                'error' => 'Demande invalide',
-                'details' => $model->errors(),
+                'error' => 'Champs obligatoires manquants.',
             ]);
         }
 
-        return $this->response->setJSON(['success' => true]);
+        if (! $model->db->table('Conges')->insert($data)) {
+            return $this->response->setStatusCode(400)->setJSON([
+                'error' => 'Demande invalide',
+                'details' => $model->db->error(),
+            ]);
+        }
+
+        return redirect()->to('/nouvelle-Demande')->with('success', 'Demande de congé soumise avec succès.');
     }
 
     public function annuler($id)
